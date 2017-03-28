@@ -1,4 +1,9 @@
 #include <SPI.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+// Set the LCD address to 0x27 for a 16 chars and 2 line display
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 //initialize x,y position
 int x = 4;
@@ -14,6 +19,8 @@ void setup() {
   {
     pinMode(yPins[i], OUTPUT); //set all output pin
   }
+  lcd.begin();
+  lcd.backlight();
 }
 
 void loop() {
@@ -57,6 +64,18 @@ void loop() {
   }
   //let only one pin be low
   digitalWrite(yPins[y], LOW);
+
+  //show on lcd display
+  if(dx != 0 || dy != 0)
+  {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("X = ");
+    lcd.print(x);
+    lcd.setCursor(0, 1);
+    lcd.print("Y = ");
+    lcd.print(y);
+  }
 
   //let it check the conditions every 200 ms
   delay(200);
