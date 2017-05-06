@@ -33,9 +33,9 @@ void loop() {
 
   //Let delta be the direction of x,y
   if(inX < 250) dx = 1; //Let delta x = 1 when X input < 250
-  if(inX > 750) dx = -1; //Let delta x = -1 when X input < 250
-  if(inY < 250) dy = -1; //Let delta y = -1 when X input < 250
-  if(inY > 750) dy = 1; //Let delta y = 1 when X input < 250
+  if(inX > 750) dx = -1; //Let delta x = -1 when X input > 750
+  if(inY < 250) dy = -1; //Let delta y = -1 when Y input < 250
+  if(inY > 750) dy = 1; //Let delta y = 1 when Y input > 250
   //X,Y will be the same position summing with the delta X,Y
   x = x + dx; 
   y = y + dy;
